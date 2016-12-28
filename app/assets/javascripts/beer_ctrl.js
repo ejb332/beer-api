@@ -48,7 +48,17 @@ angular.module("app").controller("beerCtrl", function($scope, $http) {
     $scope.orderAttribute = inputAttribute;
   };
 
+  $scope.getSortIcon = function(inputAttribute) {
+    if (inputAttribute === $scope.orderAttribute) {
+      if ($scope.isOrderDescending) {
+        return "\u2193";
+      } else {
+        return "\u2191";
+      }
+    }
+  };
+
 // For debugging in the browser
   window.$scope = $scope;
 
-})();
+});

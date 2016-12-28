@@ -8,13 +8,22 @@
       <button ng-click="changeOrderAttribute('style')">Order by style</button>
       <button ng-click="changeOrderAttribute('alcohol')">Order by alcohol %</button>
     </div>
-    <div ng-repeat="beer in beers | filter: {name: nameFilter} | orderBy:orderAttribute:isOrderDescending">
-      <h2>{{ beer.name }}</h2>
-      <p>{{ beer.style }}</p>
-      <p>{{ beer.alcohol }}</p>
-      <button ng-click="updateBeer(beer)">Update</button>
-      <button ng-click="deleteBeer(beer)">Delete</button>
-    </div>
+    <table id="beers" style="width:100%">
+      <tr>
+        <th ng-click="changeOrderAttribute('name')">Beer Name {{ getSortIcon('name') }}</th>
+        <th ng-click="changeOrderAttribute('style')">Beer Style {{ getSortIcon('style') }}</th>
+        <th ng-click="changeOrderAttribute('alcohol')">Alcohol Content {{ getSortIcon('alcohol') }}</th>
+      </tr>
+      <tr id="indicator-container">
+      </tr>
+      <tr ng-repeat="beer in beers | filter: {name: nameFilter} | orderBy:orderAttribute:isOrderDescending">
+        <td>{{ beer.name }}</td>
+        <td>{{ beer.style }}</td>
+        <td>{{ beer.alcohol }}</td>
+<!--       <button ng-click="updateBeer(beer)">Update</button>
+      <button ng-click="deleteBeer(beer)">Delete</button> -->
+      </tr>
+    </table>
     <hr>
     <h3>Add New Beer</h3>
     <ul>
