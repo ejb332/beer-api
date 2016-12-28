@@ -1,0 +1,31 @@
+<h1>Beers of the World</h1>
+
+<div ng-app="app">
+  <div ng-controller="beerCtrl" ng-init="setup()">
+  <p>Search: </p><input ng-model="nameFilter">
+    <div>
+      <button ng-click="changeOrderAttribute('name')">Order by name</button>
+      <button ng-click="changeOrderAttribute('style')">Order by style</button>
+      <button ng-click="changeOrderAttribute('alcohol')">Order by alcohol %</button>
+    </div>
+    <div ng-repeat="beer in beers | filter: {name: nameFilter} | orderBy:orderAttribute:isOrderDescending">
+      <h2>{{ beer.name }}</h2>
+      <p>{{ beer.style }}</p>
+      <p>{{ beer.alcohol }}</p>
+      <button ng-click="updateBeer(beer)">Update</button>
+      <button ng-click="deleteBeer(beer)">Delete</button>
+    </div>
+    <hr>
+    <h3>Add New Beer</h3>
+    <ul>
+      <li ng-repeat="error in errors">{{ error }}</li>
+    </ul>
+    <label>Beer name: </label>
+    <input ng-model="newName">
+    <label>Beer style: </label>
+    <input ng-model="newStyle">
+    <label>Beer alcohol content (%)</label>
+    <input ng-model="newAlcohol">
+    <button ng-click="addBeer(newName, newStyle, newAlcohol)">Add Beer</button>
+  </div>
+</div>

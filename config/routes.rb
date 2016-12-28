@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get "/beers" => "pages#index"
+
   namespace :api do
     namespace :v1 do
       get "/beers" => "beers#index"
