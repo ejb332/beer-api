@@ -55,6 +55,8 @@ angular.module("app").controller("beerCtrl", function($scope, $http) {
       } else {
         return "\u2191";
       }
+    } else {
+      return "";
     }
   };
 

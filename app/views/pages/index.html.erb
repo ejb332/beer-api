@@ -3,6 +3,9 @@
 <div ng-app="app">
   <div ng-controller="beerCtrl" ng-init="setup()">
   <p>Search: </p><input ng-model="nameFilter">
+  <datalist>
+    <option ng-repeat="beer in beers">{{ beer.name }}</option>
+  </datalist>
     <div>
       <button ng-click="changeOrderAttribute('name')">Order by name</button>
       <button ng-click="changeOrderAttribute('style')">Order by style</button>
